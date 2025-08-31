@@ -1,0 +1,6 @@
+@ZEN_YogaWebAPI_HostAddress = http://localhost:5097
+
+GET {{ZEN_YogaWebAPI_HostAddress}}/zenyoga/
+Accept: application/json
+
+###

@@ -7,10 +7,11 @@ using System.Text;
 using System.Threading.Tasks;
 using ZEN_Yoga.Models;
 using ZEN_Yoga.Services.Interfaces.Base;
+using ZEN_Yoga.Services.Interfaces.Class;
 
 namespace ZEN_Yoga.Services.Services.Class
 {
-    public class DeleteClassService : IDeleteService
+    public class DeleteClassService : IDeleteClassService
     {
         private readonly IMapper _mapper;
         private readonly ZenYogaDbContext _dbContext;

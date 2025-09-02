@@ -7,6 +7,7 @@ using ZEN_Yoga.Services.Interfaces.Base;
 using ZEN_Yoga.Services.Interfaces.Class;
 using ZEN_Yoga.Services.Interfaces.YogaType;
 using ZEN_Yoga.Services.Services;
+using ZEN_Yoga.Services.Services.Class;
 
 namespace ZEN_YogaWebAPI.Controllers
 {
@@ -87,7 +88,7 @@ namespace ZEN_YogaWebAPI.Controllers
 
         [Authorize(Roles = "1, 3")]
         [HttpPut("edit")]
-        public async Task<IActionResult> EditClass([FromServices] IUpsertService<EditClass> upsertService, [FromBody] EditClass editClass, int id)
+        public async Task<IActionResult> EditClass([FromServices] IUpsertClassService<AddClass> upsertService, [FromBody] EditClass editClass, int id)
         {
             if (editClass == null)
             {
@@ -102,7 +103,7 @@ namespace ZEN_YogaWebAPI.Controllers
 
         [Authorize(Roles = "1, 3")]
         [HttpDelete("delete")]
-        public async Task<IActionResult> Delete([FromQuery] int id, [FromServices] IDeleteService deleteService)
+        public async Task<IActionResult> Delete([FromQuery] int id, [FromServices] IDeleteClassService deleteService)
         {
             if (await deleteService.Delete(id))
             {

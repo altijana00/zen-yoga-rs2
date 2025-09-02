@@ -38,7 +38,7 @@ namespace ZEN_YogaWebAPI.Controllers
             return Ok(studios);
         }
 
-
+        [Authorize(Roles = "1, 2")]
         [HttpGet("getById")]
         public async Task<ActionResult<StudioResponse>> GetById([FromServices] IGetStudioService getStudioService, int id)
         {

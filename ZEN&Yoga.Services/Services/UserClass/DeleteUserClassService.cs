@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ZEN_Yoga.Models;
 using ZEN_Yoga.Services.Interfaces.Base;
+using ZEN_Yoga.Services.Interfaces.UserClass;
 
 namespace ZEN_Yoga.Services.Services.UserClass
 {
-    public class DeleteUserClassService : IDeleteService
+    public class DeleteUserClassService : IDeleteUserClassService
     {
         private readonly ZenYogaDbContext _dbContext;
 

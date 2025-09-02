@@ -15,7 +15,7 @@ namespace ZEN_YogaWebAPI.Controllers
     public class UserController : ControllerBase
     {
 
-        [Authorize(Roles = "1")]
+        [Authorize(Roles = "1, 2, 3")]
         [HttpGet("getAll")]        
         public async Task<ActionResult<List<UserResponse>>> GetAll([FromServices] IGetUserService getUserService)
         {
@@ -29,7 +29,7 @@ namespace ZEN_YogaWebAPI.Controllers
         }
 
 
-        [Authorize(Roles = "1")]
+        [Authorize(Roles = "1, 2, 3, 4")]
         [HttpGet("getById")]
         public async Task<ActionResult<List<UserResponse>>> GetById([FromServices] IGetUserService getUserService, int id)
         {
@@ -56,7 +56,7 @@ namespace ZEN_YogaWebAPI.Controllers
             return Ok(user);
         }
 
-        [Authorize(Roles = "1")]
+        //[Authorize(Roles = "1")]
         [HttpPost("add")]
         public async Task<IActionResult> Add([FromBody] RegisterUser registerUser, 
                                             [FromServices] IUpsertUserService<RegisterUser> upsertUserService,

@@ -7,10 +7,11 @@ using System.Text;
 using System.Threading.Tasks;
 using ZEN_Yoga.Models;
 using ZEN_Yoga.Services.Interfaces.Base;
+using ZEN_Yoga.Services.Interfaces.Studio;
 
 namespace ZEN_Yoga.Services.Services.Studio
 {
-    public class DeleteStudioService : IDeleteService
+    public class DeleteStudioService : IDeleteStudioService
     {
         private readonly ZenYogaDbContext _dbContext;
 

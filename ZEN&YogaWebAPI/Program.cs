@@ -67,11 +67,10 @@ builder.Services.AddControllers()
 
 //Base
 
-
 //User
 builder.Services.AddScoped<IGetUserService, GetUserService>();
 builder.Services.AddScoped<IUpsertUserService<RegisterUser>, UpsertUserService>();
-builder.Services.AddScoped<IDeleteService, DeleteUserService>();
+builder.Services.AddScoped<IDeleteUserService, DeleteUserService>();
 builder.Services.AddScoped<IUserValidatorService, UserValidatorService>();
 
 //City
@@ -80,13 +79,14 @@ builder.Services.AddScoped<ICityValidatorService, CityValidatorService>();
 
 //Class
 builder.Services.AddScoped<IGetClassService, GetClassService>();
-builder.Services.AddScoped<IDeleteService, DeleteClassService>();
+builder.Services.AddScoped<IDeleteClassService, DeleteClassService>();
 builder.Services.AddScoped<IUpsertClassService<AddClass>, UpsertClassService>();
 
 //Instructor
 builder.Services.AddScoped<IGetInstructorService, GetInstructorService>();
 builder.Services.AddScoped<IUpsertInstructorService<AddInstructor>, UpsertInstructorService>();
 builder.Services.AddScoped<IInstructorValidatorService, InstructorValidatorService>();
+
 
 
 //Role
@@ -96,19 +96,19 @@ builder.Services.AddScoped<IRoleValidatorService, RoleValidatorService>();
 //Studio
 builder.Services.AddScoped<IGetStudioService, GetStudioService>();
 builder.Services.AddScoped<IUpsertStudioService<AddStudio>, UpsertStudioService>();
-builder.Services.AddScoped<IDeleteService, DeleteStudioService>();
+builder.Services.AddScoped<IDeleteStudioService, DeleteStudioService>();
 builder.Services.AddScoped<IStudioValidatorService, StudioValidatorService>();
 
 
 //StudioSubscription
 builder.Services.AddScoped<IGetStudioSubscriptionService, GetStudioSubscriptionService>();
 builder.Services.AddScoped<IUpsertStudioSubscriptionService<AddStudioSubscription>, UpsertStudioSubscriptionService>();
-builder.Services.AddScoped<IDeleteService, DeleteStudioSubscription>();
+builder.Services.AddScoped<IDeleteStudioSubscriptionService, DeleteStudioSubscription>();
 
 //UserClass
 builder.Services.AddScoped<IGetUserClassService, GetUserClassService>();
 builder.Services.AddScoped<IUpsertUserClassService, UpsertUserClassService>();
-builder.Services.AddScoped<IDeleteService, DeleteUserClassService>();
+builder.Services.AddScoped<IDeleteUserClassService, DeleteUserClassService>();
 
 //SubscriptionType
 builder.Services.AddScoped<IGetSubscriptionTypeService, GetSubscriptionTypeService>();

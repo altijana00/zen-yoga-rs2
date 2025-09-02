@@ -26,6 +26,7 @@ namespace ZEN_YogaWebAPI.Controllers
 
             var claims = new List<Claim>
             {
+                new Claim("id", user.Id.ToString()),
                 new Claim(ClaimTypes.Email, user.Email),
                 new Claim(ClaimTypes.Role, user.RoleId.ToString()),
             };

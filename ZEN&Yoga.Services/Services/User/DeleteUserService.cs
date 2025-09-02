@@ -2,10 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using ZEN_Yoga.Models;
 using ZEN_Yoga.Services.Interfaces.Base;
+using ZEN_Yoga.Services.Interfaces.User;
 
 namespace ZEN_Yoga.Services.Services.User
 {
-    public class DeleteUserService : IDeleteService
+    public class DeleteUserService : IDeleteUserService
     {
 
     

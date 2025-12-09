@@ -111,7 +111,7 @@ namespace ZEN_YogaWebAPI.Controllers
 
         [Authorize(Roles = "1")]
         [HttpDelete("delete")]
-        public async Task<IActionResult> Delete([FromQuery]int id, [FromServices] IDeleteService deleteService)
+        public async Task<IActionResult> Delete([FromQuery]int id, [FromServices] IDeleteUserService deleteService)
         {
             if (await deleteService.Delete(id))
             {

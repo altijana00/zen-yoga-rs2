@@ -22,27 +22,42 @@ namespace ZEN_Yoga.Services.Services.Studio
         }
         public async Task<bool> Delete(int id)
         {
-            var studio = await _dbContext.Studios.FirstOrDefaultAsync(s => s.Id == id);
+            var studio = await _dbContext.Studios.
+                FirstOrDefaultAsync(s => s.Id == id);
+
             var classes = await _dbContext.Classes.Where(c => c.StudioId == id).ToListAsync();
             var instructors = await _dbContext.Instructors.Where(i => i.StudioId == id).ToListAsync();
+            var subscriptions = await _dbContext.StudioSubscriptions.Where(ss => ss.StudioId == id).ToListAsync();
+            var payments = await _dbContext.Payments.Where(p => p.StudioId == id).ToListAsync();
 
 
-            if (studio != null)
+
+            try
             {
-                foreach (var c in classes)
+                if (studio != null)
                 {
-                    _dbContext.Classes.Remove(c);
+                    foreach (var classs in classes)
+                    {
+
+                        var uc =   _dbContext.UserClasses.Where(c => c.ClassId == classs.Id);
+                        if (uc != null) _dbContext.UserClasses.RemoveRange(uc);
+
+                        _dbContext.Classes.Remove(classs);
+                    }
+
+                    _dbContext.Instructors.RemoveRange(instructors);
+                    _dbContext.StudioSubscriptions.RemoveRange(subscriptions);
+                    _dbContext.Payments.RemoveRange(payments);
+
+                    _dbContext.Remove(studio);
+                    await _dbContext.SaveChangesAsync();
+                    return true;
                 }
+            }
+            catch (Exception ex)
+            {
 
-                foreach (var i in instructors)
-                {
-
-                    _dbContext.Instructors.Remove(i);
-                }
-
-                _dbContext.Remove(studio);
-                await _dbContext.SaveChangesAsync();
-                return true;
+                throw;
             }
             return false;
         }

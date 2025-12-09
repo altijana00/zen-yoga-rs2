@@ -11,5 +11,6 @@ namespace ZEN_Yoga.Services.Interfaces.Studio
     public interface IGetStudioService : IGetService<Models.Studio, StudioResponse>
     {
         Task<List<StudioResponse>> GetByOwner(int ownerId);
+        Task<StudioResponse> GetByOwnerAndStudioName(int ownerId, string name);
     }
 }

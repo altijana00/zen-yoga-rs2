@@ -39,6 +39,19 @@ namespace ZEN_YogaWebAPI.Controllers
         }
 
         [Authorize(Roles = "1, 2")]
+        [HttpGet("getByOwnerAndStudioName")]
+        public async Task<ActionResult<StudioResponse>> GetByOwnerAndStudioName([FromServices] IGetStudioService getStudioService, int ownerId, string name)
+        {
+            var studio = await getStudioService.GetByOwnerAndStudioName(ownerId, name);
+
+            if (studio == null)
+            {
+                return NoContent();
+            }
+            return Ok(studio);
+        }
+
+        [Authorize(Roles = "1, 2")]
         [HttpGet("getById")]
         public async Task<ActionResult<StudioResponse>> GetById([FromServices] IGetStudioService getStudioService, int id)
         {
@@ -105,7 +118,7 @@ namespace ZEN_YogaWebAPI.Controllers
 
         [Authorize(Roles = "1, 2")]
         [HttpDelete("delete")]
-        public async Task<IActionResult> Delete(int id, [FromServices] IDeleteService deleteService)
+        public async Task<IActionResult> Delete(int id, [FromServices] IDeleteStudioService deleteService)
         {
             if (await deleteService.Delete(id))
             {

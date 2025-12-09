@@ -33,6 +33,12 @@ namespace ZEN_Yoga.Services.Services.Studio
             return _mapper.Map<List<StudioResponse>>(studios);
         }
 
+        public async Task<StudioResponse> GetByOwnerAndStudioName(int ownerId, string name)
+        {
+            var studio = await _dbContext.Studios.FirstOrDefaultAsync(s => s.OwnerId == ownerId && s.Name == name);
+            return _mapper.Map<StudioResponse>(studio);
+        }
+
         public async Task<StudioResponse> GetById(int id)
         {
             var studio = await _dbContext.Studios.FirstOrDefaultAsync(s => s.Id == id);
